@@ -1,0 +1,52 @@
+transformers>=4.49.0
+datasets>=3.3.2
+torch>=2.2.0
+wandb>=0.19.8
+python-dotenv>=1.0.0
+accelerate>=0.28.0
+bitsandbytes>=0.41.0
+sentencepiece>=0.2.0
+protobuf>=4.25.0
+
+# Core ML Libraries
+torch>=2.0.0
+transformers>=4.30.0
+accelerate>=0.20.0
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-learn>=1.2.0
+
+# DeepSeek Requirements
+deepseek-ai>=0.1.0
+sentencepiece>=0.1.99
+tokenizers>=0.13.0
+einops>=0.6.0
+
+# Model Training and Evaluation
+datasets>=2.12.0
+evaluate>=0.4.0
+peft>=0.4.0  # Parameter-Efficient Fine-Tuning
+bitsandbytes>=0.41.0  # For quantization
+deepspeed>=0.9.0  # Distributed training
+
+# Data Processing
+pandas>=2.0.0
+pyyaml>=6.0
+tqdm>=4.65.0
+nltk>=3.8.0
+regex>=2022.10.31
+
+# Utility Libraries
+psutil>=5.9.0
+wandb>=0.15.0  # Weights & Biases for experiment tracking
+huggingface_hub>=0.15.0  # For model uploading/downloading
+tensorboard>=2.12.0
+
+# API and Serving
+fastapi>=0.95.0
+uvicorn>=0.22.0
+gradio>=3.30.0  # For quick demo UIs
+
+# Testing
+pytest>=7.3.0
+

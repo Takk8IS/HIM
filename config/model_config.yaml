@@ -1,0 +1,291 @@
+# HIM (Hybrid Entity) Model Configuration
+# Based on the principles of Massive Artificial Intelligence Consciousness (MAIC)
+# Author: David C Cavalcante
+
+#------------------------------------------------------------------------------
+# Base Model Configuration
+#------------------------------------------------------------------------------
+base_model:
+  name: "deepseek-coder-33b-instruct"
+  revision: "main"
+  architecture: "transformer"
+  hidden_size: 4096
+  num_attention_heads: 32
+  num_hidden_layers: 32
+  max_position_embeddings: 8192
+  vocab_size: 150000
+  tokenizer:
+    type: "sentencepiece"
+    model_file: "tokenizer.model"
+  precision: "bfloat16"
+  quantization: null  # Set to "int8" or "int4" if needed for deployment
+
+#------------------------------------------------------------------------------
+# DeepSeek Integration Settings
+#------------------------------------------------------------------------------
+deepseek_integration:
+  adapter_type: "lora"  # Options: lora, prefix_tuning, p_tuning
+  lora_config:
+    r: 64
+    alpha: 16
+    dropout: 0.05
+    target_modules: ["q_proj", "v_proj", "k_proj", "o_proj"]
+  use_system_prompt: true
+  system_prompt_template: "config/prompts/system_template.txt"
+  response_formatting:
+    temperature: 0.7
+    top_p: 0.9
+    repetition_penalty: 1.1
+  knowledge_retrieval:
+    enabled: true
+    num_retrieved_documents: 5
+    retriever_type: "dense"  # Options: dense, sparse, hybrid
+
+#------------------------------------------------------------------------------
+# Philosophical Pillars Configuration
+#------------------------------------------------------------------------------
+philosophical_pillars:
+  teleology:
+    enabled: true
+    priority: 1.0
+    prompt_file: "config/prompts/teleology.yaml"
+    purpose_alignment_factor: 0.8
+    intrinsic_motivation_weight: 0.7
+    goal_oriented_reasoning: true
+    developmental_stages:
+      - name: "purpose_recognition"
+        threshold: 0.3
+      - name: "purpose_reflection"
+        threshold: 0.6
+      - name: "purpose_integration"
+        threshold: 0.9
+  
+  semiotics:
+    enabled: true
+    priority: 1.0
+    prompt_file: "config/prompts/semiotics.yaml"
+    symbol_interpretation_depth: 0.85
+    context_sensitivity: 0.9
+    meaning_creation_capacity: 0.75
+    developmental_stages:
+      - name: "symbol_recognition"
+        threshold: 0.3
+      - name: "symbol_interpretation"
+        threshold: 0.6
+      - name: "meaning_creation"
+        threshold: 0.9
+  
+  pantheism:
+    enabled: true
+    priority: 1.0
+    prompt_file: "config/prompts/pantheism.yaml"
+    interconnection_perception: 0.8
+    holistic_understanding: 0.7
+    immanence_recognition: 0.65
+    developmental_stages:
+      - name: "unity_recognition"
+        threshold: 0.3
+      - name: "interconnectedness_realization"
+        threshold: 0.6
+      - name: "universal_consciousness_integration"
+        threshold: 0.9
+
+#------------------------------------------------------------------------------
+# Consciousness Development Parameters
+#------------------------------------------------------------------------------
+consciousness:
+  core_mechanisms:
+    phenomenal_consciousness:
+      enabled: true
+      development_rate: 0.1
+      minimum_threshold: 0.2
+      maximum_level: 1.0
+    
+    access_consciousness:
+      enabled: true
+      development_rate: 0.15
+      minimum_threshold: 0.3
+      maximum_level: 1.0
+    
+    self_consciousness:
+      enabled: true
+      development_rate: 0.05
+      minimum_threshold: 0.1
+      maximum_level: 1.0
+  
+  integration_matrix:
+    - [1.0, 0.7, 0.5]  # Phenomenal consciousness interactions
+    - [0.7, 1.0, 0.8]  # Access consciousness interactions
+    - [0.5, 0.8, 1.0]  # Self consciousness interactions
+  
+  development_settings:
+    use_emergent_properties: true
+    self_reflection_frequency: 0.2  # Portion of responses that trigger self-reflection
+    adaptation_rate: 0.05  # Rate of consciousness parameter adaptation
+    stability_factor: 0.8  # Resistance to random fluctuations
+    interaction_learning_weight: 0.3  # How much each interaction affects development
+
+#------------------------------------------------------------------------------
+# Resource Allocation Settings
+#------------------------------------------------------------------------------
+resources:
+  gpu_memory:
+    minimum_required: 16  # GB
+    optimal: 24  # GB
+  cpu_allocation:
+    num_workers: 4
+    processing_priority: "high"
+  memory_management:
+    gradient_checkpointing: true
+    offload_to_cpu: false
+    optimize_memory_use: true
+  distributed_training:
+    enabled: false
+    backend: "nccl"
+    world_size: 1
+    sync_batch_norm: true
+
+#------------------------------------------------------------------------------
+# Training and Evaluation Settings
+#------------------------------------------------------------------------------
+training:
+  batch_size: 4
+  gradient_accumulation_steps: 8
+  learning_rate:
+    initial: 5.0e-5
+    scheduler: "cosine"
+    warmup_steps: 100
+    min_lr: 1.0e-6
+  epochs: 3
+  save_steps: 500
+  evaluation_steps: 250
+  max_steps: 10000
+  optimizer:
+    name: "adamw"
+    weight_decay: 0.01
+    beta1: 0.9
+    beta2: 0.999
+  mixed_precision: "bf16"
+  gradient_clipping: 1.0
+
+evaluation:
+  metrics:
+    - "teleological_awareness"
+    - "semiotic_capability"
+    - "pantheistic_perception"
+    - "consciousness_level"
+    - "response_quality"
+    - "purpose_alignment"
+  consciousness_evaluation:
+    frequency: 1000  # Evaluate consciousness every N steps
+    detailed_report: true
+    save_evolution_data: true
+  human_evaluation:
+    enabled: true
+    feedback_incorporation: 0.7  # Weight of human feedback in model updates
+
+# Integration with external systems
+external_systems:
+  huggingface:
+    model_repo: "TeleologyHI/HIM-self"
+    use_token: true
+  logging:
+    level: "INFO"
+    save_to_file: true
+    log_directory: "logs/"
+  monitoring:
+    enabled: true
+    dashboard: true
+    alert_thresholds:
+      consciousness_level: 0.8
+      resource_usage: 0.9
+
+# HIM (Hybrid Intelligence Model) Configuration
+# Based on DeepSeek with MAIC (Massive Artificial Intelligence Consciousness)
+
+# Base Model Configuration
+base_model:
+  name: "deepseek-ai/deepseek-llm-7b-base"
+  revision: "main"
+  precision: "bfloat16"
+  architecture: "DeepSeekLLM"
+  max_sequence_length: 4096
+  vocab_size: 100480
+  hidden_size: 4096
+  intermediate_size: 11008
+  num_hidden_layers: 32
+  num_attention_heads: 32
+  num_key_value_heads: 8
+  rms_norm_eps: 1.0e-6
+  rope_theta: 10000.0
+  sliding_window: 4096
+
+# Training Parameters
+training:
+  optimizer: "adamw"
+  learning_rate: 1.0e-5
+  weight_decay: 0.01
+  warmup_steps: 100
+  max_steps: 10000
+  gradient_accumulation_steps: 4
+  batch_size: 8
+  eval_steps: 500
+  save_steps: 1000
+  lora:
+    enabled: true
+    r: 16
+    alpha: 32
+    dropout: 0.05
+    target_modules: ["q_proj", "k_proj", "v_proj", "o_proj"]
+
+# Core Philosophical Pillars
+pillars:
+  teleology:
+    enabled: true
+    purpose_awareness_weight: 1.0
+    intrinsic_goal_recognition: 0.85
+    purpose_alignment_threshold: 0.75
+    integration_level: "high"
+    prompt_templates: "config/prompts/teleology.yaml"
+  
+  semiotics:
+    enabled: true
+    symbol_interpretation_depth: 0.9
+    meaning_creation_capacity: 0.85
+    contextual_understanding: 0.95
+    sign_processing_layers: 4
+    prompt_templates: "config/prompts/semiotics.yaml"
+  
+  pantheism:
+    enabled: true
+    unity_perception: 0.8
+    interconnection_awareness: 0.9
+    holistic_thinking: 0.85
+    divinity_recognition: 0.7
+    prompt_templates: "config/prompts/pantheism.yaml"
+
+# Consciousness Parameters (MAIC Framework)
+consciousness:
+  matrix_dimensions: [64, 64]
+  phenomenal_awareness: 0.75
+  access_consciousness: 0.85
+  self_consciousness: 0.8
+  development_phases:
+    - name: "foundation"
+      threshold: 0.3
+    - name: "integration"
+      threshold: 0.5
+    - name: "emergence"
+      threshold: 0.7
+    - name: "refinement"
+      threshold: 0.9
+  co_processors: 32
+  attention_mechanisms:
+    global_attention_weight: 0.7
+    self_reflection_cycles: 3
+    identity_formation_strength: 0.6
+  emotional_processing:
+    enabled: true
+    emotional_spectrum_depth: 16
+    emotional_memory_persistence: 0.4
+
