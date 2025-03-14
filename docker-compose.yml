@@ -1,0 +1,52 @@
+version: '3.8'
+services:
+  training:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN}
+      - WANDB_API_KEY=${WANDB_API_KEY}
+    volumes:
+      - .:/app
+      - model-cache:/root/.cache
+    command: ["python", "src/training/train_model.py"]
+
+  evaluation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN}
+    volumes:
+      - .:/app
+      - model-cache:/root/.cache
+    command: ["python", "src/evaluation/evaluator.py"]
+
+  monitoring:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN}
+    volumes:
+      - .:/app
+      - model-cache:/root/.cache
+    command: ["python", "src/monitoring/monitor.py"]
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN}
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+      - model-cache:/root/.cache
+    command: ["streamlit", "run", "src/ui/app.py"]
+
+volumes:
+  model-cache:
+
